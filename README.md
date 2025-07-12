@@ -1,17 +1,26 @@
 # Central Difference Method for SDOF System Analysis
 
-This Jupyter Notebook provides a Python implementation of the **Central Difference Method** to determine the dynamic response of a Single-Degree-of-Freedom (SDOF) system subjected to earthquake ground motion.
+![Language](https://img.shields.io/badge/language-Python-blue.svg) ![Library](https://img.shields.io/badge/library-NumPy-orange.svg) ![Library](https://img.shields.io/badge/library-Pandas-green.svg) ![Library](https://img.shields.io/badge/library-Matplotlib-purple.svg)
 
-The analysis uses the classic **1940 El Centro earthquake** dataset as the input ground motion.
+> This Jupyter Notebook provides a Python implementation of the **Central Difference Method** to determine the dynamic response of a Single-Degree-of-Freedom (SDOF) system subjected to the classic **1940 El Centro earthquake** ground motion.
 
 ---
-## Results
+
+## 📊 Results
 
 ![El-Centro Graphs](output.png)
----
 
 ---
-## Key Concepts
+
+## 📚 Table of Contents
+* [Key Concepts](#-key-concepts)
+* [Methodology](#-methodology)
+* [How to Use](#-how-to-use)
+* [Customization](#-customization)
+
+---
+
+## 🔬 Key Concepts
 
 The core of this analysis is the Central Difference Method, a powerful and straightforward numerical technique for solving the equation of motion for a dynamic system. This method approximates the velocity and acceleration at a given time step using the displacements at adjacent time steps.
 
@@ -27,26 +36,22 @@ Where:
 - $P(t)$ = Effective load due to ground acceleration, $\ddot{u}_g(t)$
 
 ---
-## Methodology
+## ⚙️ Methodology
 
-The notebook is structured to follow the logical steps of a dynamic analysis using the Central Difference Method:
+The notebook is structured to follow the logical steps of a dynamic analysis:
 
-1.  **Parameter Initialization**: Key structural properties (**Stiffness `k`**, **Mass `m`**, and **Damping Ratio `dr`**) are defined. From these, derived properties like natural frequency ($\omega_n$), natural period ($T_n$), and the damping coefficient ($c$) are calculated.
+1.  **Parameter Initialization**: Key structural properties (**Stiffness `k`**, **Mass `m`**, and **Damping Ratio `dr`**) are defined. Derived properties like natural frequency ($\omega_n$), natural period ($T_n$), and the damping coefficient ($c$) are then calculated.
 
-2.  **Data Loading**: The El Centro ground acceleration data is loaded from the `Data_Elcentro.csv` file using the `pandas` library.
+2.  **Data Loading**: The El Centro ground acceleration data is loaded from the `Data_Elcentro.csv` file.
 
-3.  **Initial Calculations**: The initial conditions (displacement $u_0$ and velocity $v_0$) are set to zero. The algorithm is kick-started by calculating the displacement at a fictitious previous time step ($u_{-1}$) and the effective load ($P_i$). Key constants for the method ($\hat{k}, a, b$) are also computed.
+3.  **Initial Calculations**: The algorithm is kick-started by setting initial conditions ($u_0, v_0$) and calculating the displacement at a fictitious previous time step ($u_{-1}$).
 
-4.  **Iterative Solution**: A `for` loop iterates through each time step of the earthquake record. In each iteration, it calculates the displacement for the next time step ($u_{i+1}$) based on the current and previous displacements ($u_i, u_{i-1}$) and the effective load at that step.
+4.  **Iterative Solution**: A `for` loop iterates through each time step of the earthquake record, calculating the displacement for the next time step ($u_{i+1}$).
 
-5.  **Visualization**: After the loop completes, the results are processed and visualized using `matplotlib`. The notebook generates four plots to show the system's response over time:
-    - Ground Acceleration vs. Time
-    - Relative Displacement vs. Time
-    - Relative Velocity vs. Time
-    - Relative Acceleration vs. Time
+5.  **Visualization**: The final results are processed and visualized using `matplotlib` to show the system's response over time (Displacement, Velocity, and Acceleration).
 
 ---
-## How to Use
+## 🚀 How to Use
 
 To run this analysis, follow these steps:
 
@@ -60,9 +65,9 @@ To run this analysis, follow these steps:
 3.  **Execution**: Open the `Central Difference Method.ipynb` file in a Jupyter environment and run the cells in order from top to bottom.
 
 ---
-## Customization
+## 🔧 Customization
 
-You can easily adapt this notebook to analyze different SDOF systems or use other earthquake records:
+You can easily adapt this notebook to analyze different SDOF systems:
 
--   **Structural Properties**: Modify the `k`, `m`, and `dr` variables in the **Initial Parameters** section to match the properties of your structure.
--   **Earthquake Data**: Replace `Data_Elcentro.csv` with another ground motion file. Ensure the file is a CSV with "time" and "acceleration" columns.
+-   **Structural Properties**: Modify the `k`, `m`, and `dr` variables in the **Initial Parameters** section to match your structure.
+-   **Earthquake Data**: Replace `Data_Elcentro.csv` with another ground motion file. Ensure it is a CSV with "time" and "acceleration" columns.
